@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AnimeState } from 'src/app/core/constants/anime';
 import { AnimeService } from 'src/app/core/services/anime.service';
 
@@ -13,7 +14,8 @@ export class AddAnimeComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private animeService: AnimeService
+    private animeService: AnimeService,
+    private router: Router
   ) {
     this.animeForm = this.formBuilder.group({
       id: [0],
@@ -24,4 +26,8 @@ export class AddAnimeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  public cancel() {
+    this.router.navigate(['/']);
+  }
 }

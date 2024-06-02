@@ -1,3 +1,35 @@
 <section class="w-full flex items-center justify-center">
- 
+  <form
+    [formGroup]="animeForm"
+    class="w-96 bg-white border border-slate p-4 mt-6"
+  >
+    <div class="mb-3">
+      <label for="title" class="font-semibold text-xl">Titulo del Anime</label>
+      <input
+        type="text"
+        formControlName="title"
+        class="border rounded-sm border-slate-400 outline-primary block w-full pl-2 py-1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="imgUrl" class="font-semibold text-xl">Url de la Imagen</label>
+      <input
+        type="text"
+        formControlName="imgUrl"
+        class="border rounded-sm border-slate-400 outline-primary block w-full pl-2 py-1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="imgUrl" class="font-semibold text-xl">Generos</label>
+      <input
+        type="text"
+        formControlName="genres"
+        class="border rounded-sm border-slate-400 outline-primary block w-full pl-2 py-1"
+      />
+    </div>
+    <div class="flex justify-between items-center">
+      <button class="btn-primary">Agregar</button>
+      <button class="btn-red" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
 </section>
