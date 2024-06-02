@@ -1,8 +1,17 @@
-<article class="w-64 mb-7 card-shadow md:w-80">
-  <div class="object-cover w-full">
-    <img src="{{ anime.imgUrl }}" alt="{{ anime.title }}" />
+<article class="w-60 mb-7 card-shadow md:w-56">
+  <div class="w-full">
+    <img
+      class="object-cover aspect-[5/7] w-full"
+      src="{{ anime.imgUrl }}"
+      alt="{{ anime.title }}"
+    />
   </div>
-  <div class="bg-white text-center p-2">
-    <p class="text-bold text-md">{{ anime.title }}</p>
+  <div class="bg-white text-center py-3">
+    <p class="text-lg font-semibold">{{ anime.title | titlecase }}</p>
+  </div>
+  <hr />
+  <div class="flex justify-between items-center p-2">
+    <button class="btn-secondary">Editar</button>
+    <button class="btn-red">Borrar</button>
   </div>
 </article>
