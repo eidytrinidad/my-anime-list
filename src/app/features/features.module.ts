@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnimeComponent } from './anime/anime-container/anime.component';
-import { AnimeListComponent } from './anime/anime-list/anime-list.component';
+import { AnimeComponent, AnimeListComponent } from './anime';
 
-
-
+const declarations = [AnimeComponent, AnimeListComponent];
 @NgModule({
-  declarations: [
-    AnimeComponent,
-    AnimeListComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [...declarations],
+  imports: [CommonModule],
+  exports: [...declarations],
 })
-export class FeaturesModule { }
+export class FeaturesModule {}

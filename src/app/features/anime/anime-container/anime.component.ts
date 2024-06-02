@@ -18,8 +18,7 @@ export class AnimeComponent implements OnInit {
     },
     {
       id: 2,
-      imgUrl:
-        'https://bananaroad.com/cdn/shop/products/pst2128_Bleach_Poster_grande.jpg?v=1621363373',
+      imgUrl: 'https://i.ebayimg.com/images/g/k00AAOSwM4FjBfDs/s-l1200.webp',
       title: 'One Piece',
       state: AnimeState.ENABLE,
     },

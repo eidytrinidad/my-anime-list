@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Anime } from 'src/app/core/models/anime.interface';
 
 @Component({
   selector: 'app-anime-list',
   templateUrl: './anime-list.component.html',
-  styleUrls: ['./anime-list.component.css']
+  styleUrls: ['./anime-list.component.css'],
 })
 export class AnimeListComponent implements OnInit {
+  @Input() animes: Anime[] = [];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
