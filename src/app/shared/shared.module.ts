@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/';
+import { CardComponent, HeaderComponent } from './components/';
 
-const declarations = [HeaderComponent];
+const declarations = [HeaderComponent, CardComponent];
 
 @NgModule({
   declarations: [...declarations],
