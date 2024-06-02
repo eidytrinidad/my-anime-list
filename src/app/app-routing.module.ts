@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AnimeComponent } from './features/anime/anime-container/anime.component';
+import { AddAnimeComponent, AnimeComponent } from './features/anime';
 
 const routes: Routes = [
   {
     path: '',
     component: AnimeComponent,
+  },
+  {
+    path: 'add-anime',
+    component: AddAnimeComponent,
   },
 ];
 
