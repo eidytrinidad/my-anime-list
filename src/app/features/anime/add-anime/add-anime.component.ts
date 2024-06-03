@@ -12,7 +12,7 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 export class AddAnimeComponent implements OnInit {
   public animeForm!: FormGroup;
   public isUpdate: boolean = false;
-  public showEnable: boolean = false;
+  public showEnable: boolean | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,9 +30,6 @@ export class AddAnimeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.showEnable = this.animeForm.get('state')?.value === false;
-    // console.log(this.showEnable);
-
     this.updateFormInputs();
   }
 
@@ -68,6 +65,7 @@ export class AddAnimeComponent implements OnInit {
           .subscribe((anime) =>
             anime && anime?.id === id ? this.animeForm.patchValue(anime) : null
           );
+        this.showEnableInput();
       }
     });
   }
@@ -78,6 +76,12 @@ export class AddAnimeComponent implements OnInit {
         .subscribe((result) => {
           this.router.navigate(['/']);
         });
+    }
+  }
+
+  public showEnableInput() {
+    if (!this.animeForm.get('state')?.value) {
+      this.showEnable = false;
     }
   }
 }
