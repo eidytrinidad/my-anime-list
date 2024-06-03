@@ -18,7 +18,7 @@ export class AddAnimeComponent implements OnInit {
     private router: Router
   ) {
     this.animeForm = this.formBuilder.group({
-      id: [0],
+      id: "",
       imgUrl: ['', Validators.required],
       title: ['', Validators.required],
       genres: [''],
