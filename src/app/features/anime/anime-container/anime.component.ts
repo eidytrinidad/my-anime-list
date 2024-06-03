@@ -13,11 +13,11 @@ export class AnimeComponent implements OnInit {
   constructor(private animeService: AnimeService) {}
 
   ngOnInit(): void {
-    this.getAnimes();
+    this.getAnimeList();
   }
 
-  public getAnimes() {
-    this.animeService.getAnimes().subscribe((animes) => {
+  public getAnimeList() {
+    this.animeService.getAnimeList().subscribe((animes) => {
       this.animes = animes;
     });
   }

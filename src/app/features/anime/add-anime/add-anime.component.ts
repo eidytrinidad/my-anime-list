@@ -21,7 +21,8 @@ export class AddAnimeComponent implements OnInit {
       id: [0],
       imgUrl: ['', Validators.required],
       title: ['', Validators.required],
-      state: [AnimeState.ENABLE, Validators.required],
+      genres: [''],
+      state: AnimeState.ENABLE,
     });
   }
 
@@ -29,5 +30,17 @@ export class AddAnimeComponent implements OnInit {
 
   public cancel() {
     this.router.navigate(['/']);
+  }
+
+  public onSubmit() {
+    if (this.animeForm.valid) {
+      const id =
+        this.animeForm.get('title')?.value.replaceAll(' ', '') +
+        Math.floor(Math.random() * 10000);
+
+      this.animeForm.get('id')?.patchValue(id);
+
+      console.log(this.animeForm.value);
+    }
   }
 }

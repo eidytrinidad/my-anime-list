@@ -27,7 +27,11 @@ export class AnimeService {
 
   constructor() {}
 
-  public getAnimes(): Observable<Anime[]> {
+  public getAnimeList(): Observable<Anime[]> {
+    const Animes = of(this.animes);
+    return Animes;
+  }
+  public addAnime(): Observable<Anime[]> {
     const Animes = of(this.animes);
     return Animes;
   }
