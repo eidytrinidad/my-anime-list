@@ -4,6 +4,7 @@
   >
     <app-card
       (deleteEvent)="deleteAnime($event)"
+      (updateEvent)="updateAnime($event)"
       *ngFor="let anime of animes"
       [anime]="anime"
     ></app-card>

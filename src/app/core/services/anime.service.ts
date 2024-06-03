@@ -23,4 +23,8 @@ export class AnimeService {
     localStorage.setItem('animes', JSON.stringify(animeList));
     return of();
   }
+  public updateAnime(animeList: Anime[]): Observable<Anime[]> {
+    localStorage.setItem('animes', JSON.stringify(animeList));
+    return of();
+  }
 }

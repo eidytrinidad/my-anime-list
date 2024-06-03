@@ -18,7 +18,7 @@ export class AddAnimeComponent implements OnInit {
     private router: Router
   ) {
     this.animeForm = this.formBuilder.group({
-      id: "",
+      id: '',
       imgUrl: ['', Validators.required],
       title: ['', Validators.required],
       genres: [''],
@@ -47,5 +47,9 @@ export class AddAnimeComponent implements OnInit {
       this.animeForm.get('title')?.value.toLowerCase().replaceAll(' ', '') +
       Math.floor(Math.random() * 10000);
     return id;
+  }
+
+  public udpdateAnime(id: string) {
+   
   }
 }

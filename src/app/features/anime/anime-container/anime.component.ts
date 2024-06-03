@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AnimeState } from 'src/app/core/constants/anime';
 import { Anime } from 'src/app/core/models/anime.interface';
 import { AnimeService } from 'src/app/core/services/anime.service';
@@ -10,7 +11,7 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 })
 export class AnimeComponent implements OnInit {
   public animes: Anime[] = [];
-  constructor(private animeService: AnimeService) {}
+  constructor(private animeService: AnimeService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAnimeList();
@@ -37,5 +38,8 @@ export class AnimeComponent implements OnInit {
     });
 
     this.animeService.deleteAnime(animeList).subscribe();
+  }
+  public updateAnime(id: string) {
+    this.router.navigate(['/upate-anime/:id']);
   }
 }

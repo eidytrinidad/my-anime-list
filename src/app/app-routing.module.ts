@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'add-anime',
     component: AddAnimeComponent,
   },
+  {
+    path: 'upate-anime/:id',
+    component: AddAnimeComponent,
+  },
 ];
 
 @NgModule({
