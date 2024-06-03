@@ -7,32 +7,17 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class AnimeService {
-  public animes: Anime[] = [
-    {
-      id: 1,
-      imgUrl:
-        'https://bananaroad.com/cdn/shop/products/pst2128_Bleach_Poster_grande.jpg?v=1621363373',
-      title: 'bleach',
-      state: AnimeState.ENABLE,
-      genres: 'aventura,sobrenatural',
-    },
-    {
-      id: 2,
-      imgUrl: 'https://i.ebayimg.com/images/g/k00AAOSwM4FjBfDs/s-l1200.webp',
-      title: 'One Piece',
-      state: AnimeState.ENABLE,
-      genres: 'aventura,fantasia,comedia,piratas',
-    },
-  ];
+  public animeList: Anime[] = [];
 
   constructor() {}
 
   public getAnimeList(): Observable<Anime[]> {
-    const Animes = of(this.animes);
-    return Animes;
+    this.animeList = JSON.parse(localStorage.getItem('animes') || '[]');
+    return of(this.animeList);
   }
-  public addAnime(): Observable<Anime[]> {
-    const Animes = of(this.animes);
-    return Animes;
+  public addAnime(anime: Anime): Observable<Anime> {
+    this.animeList = [...this.animeList, anime];
+    localStorage.setItem('animes', JSON.stringify(this.animeList));
+    return of(anime);
   }
 }

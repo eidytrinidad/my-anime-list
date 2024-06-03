@@ -34,13 +34,18 @@ export class AddAnimeComponent implements OnInit {
 
   public onSubmit() {
     if (this.animeForm.valid) {
-      const id =
-        this.animeForm.get('title')?.value.replaceAll(' ', '') +
-        Math.floor(Math.random() * 10000);
-
+      const id = this.setDynamicId();
       this.animeForm.get('id')?.patchValue(id);
-
-      console.log(this.animeForm.value);
+      this.animeService.addAnime(this.animeForm.value).subscribe((result) => {
+        this.router.navigate(['/']);
+      });
     }
+  }
+
+  public setDynamicId() {
+    const id =
+      this.animeForm.get('title')?.value.toLowerCase().replaceAll(' ', '') +
+      Math.floor(Math.random() * 10000);
+    return id;
   }
 }
