@@ -18,9 +18,10 @@ export class AnimeComponent implements OnInit {
 
   public getAnimeList() {
     this.animeService.getAnimeList().subscribe((animes) => {
-      this.animes = animes.filter(
-        (anime) => anime.state !== AnimeState.DISABLE
-      );
+      this.animes = animes;
+      // this.animes = animes.filter(
+      //   (anime) => anime.state !== AnimeState.DISABLE
+      // );
     });
   }
 
