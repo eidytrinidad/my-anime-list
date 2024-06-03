@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnimeComponent, AnimeListComponent } from './anime';
+import { AnimeComponent, AddAnimeComponent } from './anime';
 import { SharedModule } from '../shared/shared.module';
-import { AddAnimeComponent } from './anime/add-anime/add-anime.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
-const declarations = [AnimeComponent, AnimeListComponent];
+const declarations = [AnimeComponent, AddAnimeComponent];
 @NgModule({
-  declarations: [...declarations, AddAnimeComponent],
+  declarations: [...declarations],
   imports: [CommonModule, SharedModule, ReactiveFormsModule],
   exports: [...declarations],
 })

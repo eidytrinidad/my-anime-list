@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent, HeaderComponent, FormComponent } from './components/';
+import { CardComponent, HeaderComponent } from './components/';
 import { RouterModule } from '@angular/router';
 
-const declarations = [HeaderComponent, CardComponent, FormComponent];
+const declarations = [HeaderComponent, CardComponent];
 
 @NgModule({
   declarations: [...declarations],

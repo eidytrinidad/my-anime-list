@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Anime } from '../models/anime.interface';
-import { AnimeState } from '../constants/anime';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -20,9 +19,8 @@ export class AnimeService {
     localStorage.setItem('animes', JSON.stringify(this.animeList));
     return of(anime);
   }
-  public disableAnime(id: string): Observable<Anime> {
-    this.animeList = this.animeList.filter((anime) => anime.id !== id);
-    localStorage.setItem('animes', JSON.stringify(this.animeList));
+  public deleteAnime(animeList: Anime[]): Observable<Anime[]> {
+    localStorage.setItem('animes', JSON.stringify(animeList));
     return of();
   }
 }

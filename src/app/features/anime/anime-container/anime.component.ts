@@ -18,7 +18,23 @@ export class AnimeComponent implements OnInit {
 
   public getAnimeList() {
     this.animeService.getAnimeList().subscribe((animes) => {
-      this.animes = animes;
+      this.animes = animes.filter(
+        (anime) => anime.state !== AnimeState.DISABLE
+      );
     });
+  }
+
+  public deleteAnime(id: string) {
+    let animeList = this.animes.map((anime) => {
+      if (anime.id === id) {
+        return {
+          ...anime,
+          state: AnimeState.DISABLE,
+        };
+      }
+      return anime;
+    });
+
+    this.animeService.deleteAnime(animeList).subscribe();
   }
 }
