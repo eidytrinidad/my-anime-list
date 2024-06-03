@@ -5,9 +5,9 @@
     <app-card
       (deleteEvent)="deleteAnime($event)"
       (updateEvent)="updateAnime($event)"
-      *ngFor="let anime of animes"
+      *ngFor="let anime of animeList"
       [anime]="anime"
     ></app-card>
   </article>
-  <app-pagination></app-pagination>
+  <app-pagination [animeList]="animeList"></app-pagination>
 </section>

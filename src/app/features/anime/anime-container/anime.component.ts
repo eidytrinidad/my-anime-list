@@ -10,7 +10,7 @@ import { AnimeService } from 'src/app/core/services/anime.service';
   styleUrls: ['./anime.component.css'],
 })
 export class AnimeComponent implements OnInit {
-  public animes: Anime[] = [];
+  public animeList: Anime[] = [];
   constructor(
     private animeService: AnimeService,
     private router: Router,
@@ -28,14 +28,14 @@ export class AnimeComponent implements OnInit {
 
   public getAnimeList() {
     this.animeService.getAnimeList().subscribe((animes) => {
-      this.animes = animes.filter(
+      this.animeList = animes.filter(
         (anime) => anime.state !== AnimeState.DISABLE
       );
     });
   }
 
   public deleteAnime(id: string) {
-    let animeList = this.animes.map((anime) => {
+    let animeList = this.animeList.map((anime) => {
       if (anime.id === id) {
         return {
           ...anime,
@@ -55,9 +55,13 @@ export class AnimeComponent implements OnInit {
 
   public disabledAnimes() {
     this.animeService.getAnimeList().subscribe((animes) => {
-      this.animes = animes.filter(
+      this.animeList = animes.filter(
         (anime) => anime.state === AnimeState.DISABLE
       );
     });
+  }
+
+  public pagination() {
+  
   }
 }
