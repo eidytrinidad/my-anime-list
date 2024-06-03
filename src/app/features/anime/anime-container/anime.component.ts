@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimeState } from 'src/app/core/constants/anime';
 import { Anime } from 'src/app/core/models/anime.interface';
 import { AnimeService } from 'src/app/core/services/anime.service';
@@ -11,18 +11,26 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 })
 export class AnimeComponent implements OnInit {
   public animes: Anime[] = [];
-  constructor(private animeService: AnimeService, private router: Router) {}
+  constructor(
+    private animeService: AnimeService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getAnimeList();
+    this.route.queryParams.subscribe(({ showdisable }) => {
+      if (showdisable) {
+        return this.disabledAnimes();
+      }
+      return this.getAnimeList();
+    });
   }
 
   public getAnimeList() {
     this.animeService.getAnimeList().subscribe((animes) => {
-      this.animes = animes;
-      // this.animes = animes.filter(
-      //   (anime) => anime.state !== AnimeState.DISABLE
-      // );
+      this.animes = animes.filter(
+        (anime) => anime.state !== AnimeState.DISABLE
+      );
     });
   }
 
@@ -43,5 +51,13 @@ export class AnimeComponent implements OnInit {
   }
   public updateAnime(id: string) {
     this.router.navigate([`/upate-anime/${id}`]);
+  }
+
+  public disabledAnimes() {
+    this.animeService.getAnimeList().subscribe((animes) => {
+      this.animes = animes.filter(
+        (anime) => anime.state === AnimeState.DISABLE
+      );
+    });
   }
 }
