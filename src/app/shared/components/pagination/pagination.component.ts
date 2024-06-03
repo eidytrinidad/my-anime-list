@@ -8,8 +8,18 @@ import { Anime } from 'src/app/core/models/anime.interface';
 })
 export class PaginationComponent implements OnInit {
   @Input() animeList: Anime[] = [];
+  @Input() itemsPerPage: number = 0;
 
+  public paginationItems: any;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.pagination();
+  }
+  public pagination() {
+    this.paginationItems = this.animeList.slice(
+      0,
+      this.animeList.length < 5 ? 1 : this.animeList.length / this.itemsPerPage
+    );
+  }
 }
