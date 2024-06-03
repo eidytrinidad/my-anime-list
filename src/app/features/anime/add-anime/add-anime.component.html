@@ -29,7 +29,8 @@
       />
     </div>
     <div class="flex justify-between items-center">
-      <button class="btn-primary">Agregar</button>
+      <button *ngIf="!isUpdate" class="btn-primary">Agregar</button>
+      <button *ngIf="isUpdate" class="btn-secondary">Editar</button>
       <button class="btn-red" (click)="cancel()">Cancelar</button>
     </div>
   </form>

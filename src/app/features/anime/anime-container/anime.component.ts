@@ -37,9 +37,11 @@ export class AnimeComponent implements OnInit {
       return anime;
     });
 
-    this.animeService.deleteAnime(animeList).subscribe();
+    this.animeService.deleteAnime(animeList).subscribe(() => {
+      this.getAnimeList();
+    });
   }
   public updateAnime(id: string) {
-    this.router.navigate(['/upate-anime/:id']);
+    this.router.navigate([`/upate-anime/${id}`]);
   }
 }

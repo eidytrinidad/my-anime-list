@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimeState } from 'src/app/core/constants/anime';
 import { AnimeService } from 'src/app/core/services/anime.service';
 
@@ -11,11 +11,13 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 })
 export class AddAnimeComponent implements OnInit {
   public animeForm!: FormGroup;
+  public isUpdate: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private animeService: AnimeService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.animeForm = this.formBuilder.group({
       id: '',
@@ -26,19 +28,23 @@ export class AddAnimeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateFormInputs();
+  }
 
   public cancel() {
     this.router.navigate(['/']);
   }
 
   public onSubmit() {
-    if (this.animeForm.valid) {
+    if (this.animeForm.valid !== this.isUpdate) {
       const id = this.setDynamicId();
       this.animeForm.get('id')?.patchValue(id);
       this.animeService.addAnime(this.animeForm.value).subscribe((result) => {
         this.router.navigate(['/']);
       });
+    } else {
+      this.udpdateAnime();
     }
   }
 
@@ -49,7 +55,25 @@ export class AddAnimeComponent implements OnInit {
     return id;
   }
 
-  public udpdateAnime(id: string) {
-   
+  public updateFormInputs() {
+    this.route.params.subscribe(({ id }) => {
+      if (id) {
+        this.isUpdate = true;
+        this.animeService
+          .getAnime(id)
+          .subscribe((anime) =>
+            anime && anime?.id === id ? this.animeForm.patchValue(anime) : null
+          );
+      }
+    });
+  }
+  public udpdateAnime() {
+    if (this.animeForm.valid) {
+      this.animeService
+        .updateAnime(this.animeForm.value)
+        .subscribe((result) => {
+          this.router.navigate(['/']);
+        });
+    }
   }
 }

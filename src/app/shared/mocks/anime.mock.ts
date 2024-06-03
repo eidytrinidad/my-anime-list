@@ -17,4 +17,12 @@ export const animes: Anime[] = [
     state: AnimeState.ENABLE,
     genres: 'aventura,fantasia,comedia,piratas',
   },
+  {
+    id: 'myheroacademia8597',
+    imgUrl:
+      'https://cdn.europosters.eu/image/750/postermy-hero-academia-reach-up-i112431.jpg',
+    title: 'My Hero Academia',
+    genres: 'superheroes, accion',
+    state: AnimeState.ENABLE,
+  },
 ];
