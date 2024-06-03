@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent, HeaderComponent } from './components/';
+import {
+  CardComponent,
+  HeaderComponent,
+  PaginationComponent,
+} from './components/';
 import { RouterModule } from '@angular/router';
 
-const declarations = [HeaderComponent, CardComponent];
+const declarations = [HeaderComponent, CardComponent, PaginationComponent];
 
 @NgModule({
   declarations: [...declarations],
