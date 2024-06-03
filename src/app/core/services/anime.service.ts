@@ -20,4 +20,9 @@ export class AnimeService {
     localStorage.setItem('animes', JSON.stringify(this.animeList));
     return of(anime);
   }
+  public disableAnime(id: string): Observable<Anime> {
+    this.animeList = this.animeList.filter((anime) => anime.id !== id);
+    localStorage.setItem('animes', JSON.stringify(this.animeList));
+    return of();
+  }
 }
