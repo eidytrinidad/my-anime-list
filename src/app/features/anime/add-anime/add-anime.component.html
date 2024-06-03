@@ -20,17 +20,29 @@
         class="border rounded-sm border-slate-400 outline-primary block w-full pl-2 py-1"
       />
     </div>
+
     <div class="mb-3">
-      <label for="imgUrl" class="font-semibold text-xl">Generos</label>
+      <label for="genres" class="font-semibold text-xl">Generos</label>
       <input
         type="text"
         formControlName="genres"
         class="border rounded-sm border-slate-400 outline-primary block w-full pl-2 py-1"
       />
     </div>
+    <div class="mb-3" *ngIf="showEnable === false">
+      <label for="state" class="font-semibold cursor-pointer flex items-center">
+        <input
+          type="checkbox"
+          formControlName="state"
+          id="state"
+          class="mr-2"
+        />
+        <span>Habilitar Anime</span>
+      </label>
+    </div>
     <div class="flex justify-between items-center">
       <button *ngIf="!isUpdate" class="btn-primary">Agregar</button>
-      <button *ngIf="isUpdate" class="btn-secondary">Editar</button>
+      <button *ngIf="isUpdate" class="btn-primary">Editar</button>
       <button class="btn-red" (click)="cancel()">Cancelar</button>
     </div>
   </form>

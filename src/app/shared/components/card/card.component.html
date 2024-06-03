@@ -10,8 +10,11 @@
     <p class="text-lg font-semibold">{{ anime.title | titlecase }}</p>
   </div>
   <hr />
-  <div class="flex justify-between items-center p-2">
+  <div class="flex justify-between items-center p-2" *ngIf="anime.state">
     <button class="btn-secondary" (click)="update(anime.id)">Editar</button>
     <button class="btn-red" (click)="delete(anime.id)">Borrar</button>
+  </div>
+  <div class="flex justify-center items-center p-2" *ngIf="!anime.state">
+    <button class="btn-secondary" (click)="update(anime.id)">Habilitar</button>
   </div>
 </article>

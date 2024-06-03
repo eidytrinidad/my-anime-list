@@ -10,6 +10,7 @@ export class CardComponent implements OnInit {
   @Input() anime!: Anime;
   @Output() deleteEvent = new EventEmitter();
   @Output() updateEvent = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -17,6 +18,7 @@ export class CardComponent implements OnInit {
   public delete(id: string) {
     this.deleteEvent.emit(id);
   }
+
   public update(id: string) {
     this.updateEvent.emit(id);
   }

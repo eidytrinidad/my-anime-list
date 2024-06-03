@@ -12,6 +12,7 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 export class AddAnimeComponent implements OnInit {
   public animeForm!: FormGroup;
   public isUpdate: boolean = false;
+  public showEnable: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,9 @@ export class AddAnimeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.showEnable = this.animeForm.get('state')?.value === false;
+    // console.log(this.showEnable);
+
     this.updateFormInputs();
   }
 
