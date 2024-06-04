@@ -7,27 +7,25 @@ import { Anime } from 'src/app/core/models/anime.interface';
   styleUrls: ['./pagination.component.css'],
 })
 export class PaginationComponent implements OnInit {
-  @Input() animeList: Anime[] = [];
+  @Input() totalPages: number = 0;
   @Input() itemsPerPage: number = 0;
   @Output() handleChangePageEvent = new EventEmitter();
   public page: number = 1;
-  public paginationItems: any;
+  public pageList: number[] = [];
   constructor() {}
 
   ngOnInit(): void {
     this.pagination();
   }
   public pagination() {
-    this.paginationItems = this.animeList.slice(
-      0,
-      this.animeList.length <= this.itemsPerPage
-        ? 1
-        : Math.ceil(this.animeList.length / this.itemsPerPage)
-    );
+    this.pageList = Array(this.totalPages)
+      .fill(0)
+      .map((_, i) => i + 1);
   }
 
   public handleChangePage(page: number) {
     this.page = page;
+
     this.handleChangePageEvent.emit(page);
   }
 }

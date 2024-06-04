@@ -11,8 +11,8 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 })
 export class AnimeComponent implements OnInit {
   public animeList: Anime[] = [];
-  public filteredAnimeList: Anime[] = [];
-  public itemsPerPage =5;
+  public totalPages: number = 0;
+  public itemsPerPage = 5;
   public page = 1;
   constructor(
     private animeService: AnimeService,
@@ -21,21 +21,37 @@ export class AnimeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAnimesByState();
+  }
+
+  public getAnimesByState() {
+    let disabledAnimes = this.getAnimeList().filter(
+      (anime) => anime.state === AnimeState.DISABLE
+    );
+    let enabledAnimes = this.getAnimeList().filter(
+      (anime) => anime.state === AnimeState.ENABLE
+    );
     this.route.queryParams.subscribe(({ showdisable }) => {
       if (showdisable) {
         return this.disabledAnimes();
       }
-      return this.getAnimeList();
+      this.totalPages =
+        enabledAnimes.length < this.itemsPerPage
+          ? 1
+          : Math.ceil(enabledAnimes.length / this.itemsPerPage);
+      return (this.animeList = enabledAnimes.slice(
+        this.page * this.itemsPerPage - this.itemsPerPage,
+        this.page * this.itemsPerPage
+      ));
     });
   }
 
   public getAnimeList() {
+    let animeListData: Anime[] = [];
     this.animeService.getAnimeList().subscribe((animes) => {
-      this.animeList = animes.filter(
-        (anime) => anime.state !== AnimeState.DISABLE
-      );
-      this.pagination();
+      animeListData = animes;
     });
+    return animeListData;
   }
 
   public deleteAnime(id: string) {
@@ -50,7 +66,7 @@ export class AnimeComponent implements OnInit {
     });
 
     this.animeService.deleteAnime(animeList).subscribe(() => {
-      this.getAnimeList();
+      this.getAnimesByState();
     });
   }
   public updateAnime(id: string) {
@@ -65,15 +81,8 @@ export class AnimeComponent implements OnInit {
     });
   }
 
-  public pagination() {
-    this.filteredAnimeList = this.animeList?.slice(
-      this.page * this.itemsPerPage - this.itemsPerPage,
-      this.page * this.itemsPerPage
-    );
-  }
-
   public handleChangePage(selectedPage: number) {
     this.page = selectedPage;
-    this.getAnimeList();
+    this.getAnimesByState();
   }
 }

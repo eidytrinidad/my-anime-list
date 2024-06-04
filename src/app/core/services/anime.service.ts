@@ -20,8 +20,8 @@ export class AnimeService {
     return of(anime);
   }
   public addAnime(anime: Anime): Observable<Anime> {
-    this.animeList = [...this.animeList, anime];
-    // this.animeList = animes;
+    this.animeList.unshift(anime);
+    //this.animeList = animes;
     localStorage.setItem('animes', JSON.stringify(this.animeList));
     return of(anime);
   }
