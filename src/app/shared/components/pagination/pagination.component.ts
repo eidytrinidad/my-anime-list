@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Anime } from 'src/app/core/models/anime.interface';
 
 @Component({
@@ -9,7 +9,8 @@ import { Anime } from 'src/app/core/models/anime.interface';
 export class PaginationComponent implements OnInit {
   @Input() animeList: Anime[] = [];
   @Input() itemsPerPage: number = 0;
-
+  @Output() handleChangePageEvent = new EventEmitter();
+  public page: number = 1;
   public paginationItems: any;
   constructor() {}
 
@@ -19,7 +20,12 @@ export class PaginationComponent implements OnInit {
   public pagination() {
     this.paginationItems = this.animeList.slice(
       0,
-      this.animeList.length < 5 ? 1 : this.animeList.length / this.itemsPerPage
+      this.animeList.length < 1 ? 1 : this.animeList.length / this.itemsPerPage
     );
+  }
+
+  public handleChangePage(page: number) {
+    this.page = page;
+    this.handleChangePageEvent.emit(page);
   }
 }

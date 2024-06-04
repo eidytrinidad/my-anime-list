@@ -1,7 +1,13 @@
 <section class="flex justify-center mb-3">
   <ul class="min-w-28 py-3 flex justify-between">
     <li *ngFor="let pages of paginationItems; index as i">
-      <span class="btn-primary">{{ i + 1 }}</span>
+      <span
+        (click)="handleChangePage(i + 1)"
+        [ngClass]="
+          page === i + 1 ? 'pagination-btn-secondary' : 'pagination-btn-primary'
+        "
+        >{{ i + 1 }}</span
+      >
     </li>
   </ul>
 </section>

@@ -4,6 +4,7 @@
 
 @layer components {
 
+
     .btn-primary {
         @apply border text-white bg-primary hover:border-primary hover:bg-white hover:text-primary rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
     }
@@ -18,5 +19,13 @@
 
     .card-shadow {
         box-shadow: 0px 4px 16px rgba(17, 17, 26, 0.1), 0px 8px 24px rgba(17, 17, 26, 0.1), 0px 16px 56px rgba(17, 17, 26, 0.1);
+    }
+
+    .pagination-btn-primary {
+        @apply border text-white bg-primary rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
+    }
+
+    .pagination-btn-secondary {
+        @apply border text-white bg-secondary rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
     }
 }

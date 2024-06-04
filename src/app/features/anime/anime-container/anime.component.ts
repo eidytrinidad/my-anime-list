@@ -11,7 +11,9 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 })
 export class AnimeComponent implements OnInit {
   public animeList: Anime[] = [];
+  public filteredAnimeList: Anime[] = [];
   public itemsPerPage = 1;
+  public page = 1;
   constructor(
     private animeService: AnimeService,
     private router: Router,
@@ -32,6 +34,7 @@ export class AnimeComponent implements OnInit {
       this.animeList = animes.filter(
         (anime) => anime.state !== AnimeState.DISABLE
       );
+      this.pagination();
     });
   }
 
@@ -63,15 +66,14 @@ export class AnimeComponent implements OnInit {
   }
 
   public pagination() {
-    this.animeList
-      .slice(
-        0,
-        this.animeList.length < 6
-          ? 1
-          : this.animeList.length / this.itemsPerPage
-      )
-      .map((_: any, i: number) => {
-        console.log(i);
-      });
+    this.filteredAnimeList = this.animeList?.slice(
+      this.page * this.itemsPerPage - this.itemsPerPage,
+      this.page * this.itemsPerPage
+    );
+  }
+
+  public handleChangePage(selectedPage: number) {
+    this.page = selectedPage;
+    this.getAnimeList();
   }
 }
