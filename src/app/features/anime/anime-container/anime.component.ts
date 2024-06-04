@@ -37,7 +37,7 @@ export class AnimeComponent implements OnInit {
 
     this.route.queryParams.subscribe(({ showdisable }) => {
       if (showdisable) {
-        return this.disabledAnimes();
+        return this.disabledAnimes(disabledAnimes);
       }
 
       this.totalPages =
@@ -79,12 +79,16 @@ export class AnimeComponent implements OnInit {
     this.router.navigate([`/upate-anime/${id}`]);
   }
 
-  public disabledAnimes() {
-    this.animeService.getAnimeList().subscribe((animes) => {
-      this.animeList = animes.filter(
-        (anime) => anime.state === AnimeState.DISABLE
-      );
-    });
+  public disabledAnimes(disabledAnimes: Anime[]) {
+    this.totalPages =
+      disabledAnimes.length < this.itemsPerPage
+        ? 1
+        : Math.ceil(disabledAnimes.length / this.itemsPerPage);
+
+    return (this.animeList = disabledAnimes.slice(
+      this.page * this.itemsPerPage - this.itemsPerPage,
+      this.page * this.itemsPerPage
+    ));
   }
 
   public handleChangePage(selectedPage: number) {

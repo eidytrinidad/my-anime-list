@@ -10,6 +10,7 @@
     ></app-card>
   </article>
   <app-pagination
+    [animeList]="animeList"
     [totalPages]="totalPages"
     [itemsPerPage]="itemsPerPage"
     (handleChangePageEvent)="handleChangePage($event)"

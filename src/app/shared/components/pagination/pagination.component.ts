@@ -17,7 +17,7 @@ import { Anime } from 'src/app/core/models/anime.interface';
 export class PaginationComponent implements OnInit, OnChanges {
   @Input() totalPages!: number;
   @Input() itemsPerPage!: number;
-
+  @Input() animeList: Anime[] = [];
   @Output() handleChangePageEvent = new EventEmitter();
   public page: number = 1;
   public pageList: number[] = [];
