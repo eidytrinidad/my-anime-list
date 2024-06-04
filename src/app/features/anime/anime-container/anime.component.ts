@@ -11,9 +11,11 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 })
 export class AnimeComponent implements OnInit {
   public animeList: Anime[] = [];
+  public allAnimes: Anime[] = [];
   public totalPages: number = 0;
   public itemsPerPage = 5;
   public page = 1;
+
   constructor(
     private animeService: AnimeService,
     private router: Router,
@@ -25,20 +27,24 @@ export class AnimeComponent implements OnInit {
   }
 
   public getAnimesByState() {
-    let disabledAnimes = this.getAnimeList().filter(
+    this.allAnimes = this.getAnimeList();
+    let disabledAnimes = this.allAnimes.filter(
       (anime) => anime.state === AnimeState.DISABLE
     );
-    let enabledAnimes = this.getAnimeList().filter(
+    let enabledAnimes = this.allAnimes.filter(
       (anime) => anime.state === AnimeState.ENABLE
     );
+
     this.route.queryParams.subscribe(({ showdisable }) => {
       if (showdisable) {
         return this.disabledAnimes();
       }
+
       this.totalPages =
         enabledAnimes.length < this.itemsPerPage
           ? 1
           : Math.ceil(enabledAnimes.length / this.itemsPerPage);
+
       return (this.animeList = enabledAnimes.slice(
         this.page * this.itemsPerPage - this.itemsPerPage,
         this.page * this.itemsPerPage
@@ -55,7 +61,7 @@ export class AnimeComponent implements OnInit {
   }
 
   public deleteAnime(id: string) {
-    let animeList = this.animeList.map((anime) => {
+    let animeList = this.allAnimes.map((anime) => {
       if (anime.id === id) {
         return {
           ...anime,
@@ -64,7 +70,7 @@ export class AnimeComponent implements OnInit {
       }
       return anime;
     });
-
+    this.page = 1;
     this.animeService.deleteAnime(animeList).subscribe(() => {
       this.getAnimesByState();
     });

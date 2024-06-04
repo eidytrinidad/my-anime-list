@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Anime } from 'src/app/core/models/anime.interface';
 
 @Component({
@@ -6,17 +14,26 @@ import { Anime } from 'src/app/core/models/anime.interface';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css'],
 })
-export class PaginationComponent implements OnInit {
-  @Input() totalPages: number = 0;
-  @Input() itemsPerPage: number = 0;
+export class PaginationComponent implements OnInit, OnChanges {
+  @Input() totalPages!: number;
+  @Input() itemsPerPage!: number;
+
   @Output() handleChangePageEvent = new EventEmitter();
   public page: number = 1;
   public pageList: number[] = [];
   constructor() {}
+  ngOnChanges(changes: SimpleChanges): void {
+    let { totalPages } = changes;
+    if (totalPages?.currentValue < totalPages?.previousValue) {
+      this.page = 1;
+      this.pagination();
+    }
+  }
 
   ngOnInit(): void {
     this.pagination();
   }
+
   public pagination() {
     this.pageList = Array(this.totalPages)
       .fill(0)
