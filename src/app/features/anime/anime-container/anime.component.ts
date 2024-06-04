@@ -34,11 +34,11 @@ export class AnimeComponent implements OnInit {
       if (showdisable) {
         this.activeList = false;
 
-        return this.getDisabledAnimes();
+        this.getDisabledAnimes();
+        return;
       }
       this.activeList = true;
-
-      return this.getEnabledAnimes();
+      this.getEnabledAnimes();
     });
   }
 
@@ -62,7 +62,7 @@ export class AnimeComponent implements OnInit {
     });
     this.page = 1;
     this.animeService.deleteAnime(animeList).subscribe(() => {
-      this.getAnimesByState();
+      this.getEnabledAnimes();
     });
   }
   public updateAnime(id: string) {
@@ -70,7 +70,7 @@ export class AnimeComponent implements OnInit {
   }
 
   public getDisabledAnimes() {
-    let disabledAnimes = this.allAnimes.filter(
+    let disabledAnimes = this.getAnimeList().filter(
       (anime) => anime.state === AnimeState.DISABLE
     );
     this.totalPages =
@@ -84,9 +84,10 @@ export class AnimeComponent implements OnInit {
     ));
   }
   public getEnabledAnimes() {
-    let enabledAnimes = this.allAnimes.filter(
+    let enabledAnimes = this.getAnimeList().filter(
       (anime) => anime.state === AnimeState.ENABLE
     );
+
     this.totalPages =
       enabledAnimes.length < this.itemsPerPage
         ? 1
