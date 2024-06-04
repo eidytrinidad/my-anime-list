@@ -1,4 +1,4 @@
-<article class="w-60 mb-7 card-shadow md:w-56">
+<article class="w-60 mb-7 card-shadow md:w-52 relative">
   <div class="w-full">
     <img
       class="object-cover aspect-[5/7] w-full"
@@ -6,15 +6,21 @@
       alt="{{ anime.title }}"
     />
   </div>
-  <div class="bg-white text-center py-3">
-    <p class="font-semibold">{{ anime.title | titlecase }}</p>
+  <div class="text-center py-2 absolute top-0 w-full bg-slate-900/[0.6]">
+    <p class="font-semibold text-white">{{ anime.title | titlecase }}</p>
   </div>
   <hr />
-  <div class="flex justify-between items-center p-2" *ngIf="anime.state">
+  <div
+    class="flex justify-between items-center p-3 bg-white"
+    *ngIf="anime.state"
+  >
     <button class="btn-secondary" (click)="update(anime.id)">Editar</button>
     <button class="btn-red" (click)="delete(anime.id)">Borrar</button>
   </div>
-  <div class="flex justify-center items-center p-2" *ngIf="!anime.state">
+  <div
+    class="flex justify-center items-center p-3 bg-white"
+    *ngIf="!anime.state"
+  >
     <button class="btn-secondary" (click)="update(anime.id)">Habilitar</button>
   </div>
 </article>

@@ -2,19 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background: #f7f7f7;
+}
+
 @layer components {
 
 
     .btn-primary {
-        @apply border text-white bg-primary hover:border-primary hover:bg-white hover:text-primary rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
+        @apply border text-white bg-primary hover:border-primary hover:bg-white hover:text-primary rounded-md px-3 py-2 text-sm lg:px-4 font-semibold cursor-pointer;
     }
 
     .btn-secondary {
-        @apply border text-white bg-secondary hover:border-secondary hover:bg-white hover:text-secondary rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
+        @apply border text-white bg-secondary hover:border-secondary hover:bg-white hover:text-secondary rounded-md px-3 py-2 text-sm lg:px-4 font-semibold cursor-pointer;
     }
 
     .btn-red {
-        @apply border bg-red-500 text-white hover:border-red-600 hover:text-red-600 hover:bg-white rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
+        @apply border bg-red-500 text-white hover:border-red-600 hover:text-red-600 hover:bg-white rounded-md px-3 py-2 text-sm lg:px-4 font-semibold cursor-pointer;
     }
 
     .card-shadow {
