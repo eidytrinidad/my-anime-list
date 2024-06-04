@@ -20,7 +20,9 @@ export class PaginationComponent implements OnInit {
   public pagination() {
     this.paginationItems = this.animeList.slice(
       0,
-      this.animeList.length < 1 ? 1 : this.animeList.length / this.itemsPerPage
+      this.animeList.length <= this.itemsPerPage
+        ? 1
+        : Math.ceil(this.animeList.length / this.itemsPerPage)
     );
   }
 
