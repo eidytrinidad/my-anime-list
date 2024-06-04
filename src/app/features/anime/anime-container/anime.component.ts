@@ -12,7 +12,7 @@ import { AnimeService } from 'src/app/core/services/anime.service';
 export class AnimeComponent implements OnInit {
   public animeList: Anime[] = [];
   public filteredAnimeList: Anime[] = [];
-  public itemsPerPage =5;
+  public itemsPerPage =10;
   public page = 1;
   constructor(
     private animeService: AnimeService,
