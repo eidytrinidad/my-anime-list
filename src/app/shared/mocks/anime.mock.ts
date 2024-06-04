@@ -28,7 +28,7 @@ export const animes: Anime[] = [
   {
     id: 'demonslayer8597',
     imgUrl:
-      'https://cdn.noitatnemucod.net/thumbnail/1366x768/100/46d8e6d3fcd4a016ff5e90f0281eae76.jpg',
+      'https://i.pinimg.com/736x/1c/c3/ab/1cc3ab67524b864d061f5d1e631adcbf.jpg',
     title: 'Demon Slayer',
     genres: 'fantasia, demonios,',
     state: AnimeState.ENABLE,
@@ -36,7 +36,7 @@ export const animes: Anime[] = [
   {
     id: 'thenewgate19122',
     imgUrl:
-      'https://cdn.noitatnemucod.net/thumbnail/1366x768/100/6e2400c551da2d8a07be697773bdbf0d.jpg',
+      'https://a.storyblok.com/f/178900/960x1348/b1c8d04c06/the-new-gate-visual.jpg/m/filters:quality(95)format(webp)',
     title: 'The New Gate',
     genres: 'isekai, juego online',
     state: AnimeState.ENABLE,
@@ -44,15 +44,14 @@ export const animes: Anime[] = [
   {
     id: 'deliciousindungeon18506',
     imgUrl:
-      'https://cdn.noitatnemucod.net/thumbnail/1366x768/100/50affe2ea9a02c36d5a7c0532c1b7ef9.jpeg',
+      'https://ih1.redbubble.net/image.5396451164.6092/flat,750x,075,f-pad,750x1000,f8f8f8.u1.webp',
     title: 'Dugeon meshi',
     genres: 'mazmorras,comida,aventura',
     state: AnimeState.ENABLE,
   },
   {
     id: 'windbreaker19136',
-    imgUrl:
-      'https://cdn.noitatnemucod.net/thumbnail/1366x768/100/b8b1bbc386d81a95c40e236089e11312.jpg',
+    imgUrl: 'https://pbs.twimg.com/media/GKUA85ob0AADn29.jpg',
     title: 'Wind Breaker',
     genres: 'accion, peleas escolares',
     state: AnimeState.ENABLE,
@@ -69,7 +68,7 @@ export const animes: Anime[] = [
     id: 'theapothecarydiaries18578',
     title: 'The Apothecary Diaries',
     imgUrl:
-      'https://cdn.noitatnemucod.net/thumbnail/1366x768/100/31aacbf403a8f1c180a940009dbf17f5.jpeg',
+      'https://m.media-amazon.com/images/I/714g6aEGYeL._AC_UF894,1000_QL80_.jpg',
     genres: 'epoca, drama, misterios',
     state: AnimeState.ENABLE,
   },
