@@ -17,23 +17,22 @@ import { Anime } from 'src/app/core/models/anime.interface';
 export class PaginationComponent implements OnInit, OnChanges {
   @Input() totalPages!: number;
   @Input() itemsPerPage!: number;
-  @Input() animeList: Anime[] = [];
+  @Input() isAnimeEnable!: boolean;
   @Output() handleChangePageEvent = new EventEmitter();
   public page: number = 1;
   public pageList: number[] = [];
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
-    let { totalPages, animeList } = changes;
+    let { totalPages, isAnimeEnable } = changes;
 
-    if (totalPages?.currentValue) {
+    if (isAnimeEnable?.currentValue !== undefined) {
+      this.page = 1;
+    }
+
+    if (totalPages?.currentValue < totalPages?.previousValue) {
       this.page = 1;
       this.pagination();
     }
-
-    // if (totalPages?.currentValue < totalPages?.previousValue) {
-    //   this.page = 1;
-    //   this.pagination();
-    // }
   }
 
   ngOnInit(): void {

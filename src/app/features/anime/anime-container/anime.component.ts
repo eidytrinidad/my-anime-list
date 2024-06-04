@@ -14,7 +14,7 @@ export class AnimeComponent implements OnInit {
   public allAnimes: Anime[] = [];
   public totalPages: number = 0;
   public itemsPerPage = 5;
-  public activeList: boolean = true;
+  public isAnimeEnable: boolean = true;
   public page = 1;
 
   constructor(
@@ -32,12 +32,12 @@ export class AnimeComponent implements OnInit {
     this.route.queryParams.subscribe(({ showdisable }) => {
       this.page = 1;
       if (showdisable) {
-        this.activeList = false;
+        this.isAnimeEnable = false;
 
         this.getDisabledAnimes();
         return;
       }
-      this.activeList = true;
+      this.isAnimeEnable = true;
       this.getEnabledAnimes();
     });
   }
@@ -101,7 +101,7 @@ export class AnimeComponent implements OnInit {
 
   public handleChangePage(selectedPage: number) {
     this.page = selectedPage;
-    if (!this.activeList) {
+    if (!this.isAnimeEnable) {
       return this.getDisabledAnimes();
     }
     return this.getEnabledAnimes();
