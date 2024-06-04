@@ -14,6 +14,7 @@ export class AnimeComponent implements OnInit {
   public allAnimes: Anime[] = [];
   public totalPages: number = 0;
   public itemsPerPage = 5;
+  public activeList: boolean = true;
   public page = 1;
 
   constructor(
@@ -23,32 +24,21 @@ export class AnimeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.allAnimes = this.getAnimeList();
     this.getAnimesByState();
   }
 
   public getAnimesByState() {
-    this.allAnimes = this.getAnimeList();
-    let disabledAnimes = this.allAnimes.filter(
-      (anime) => anime.state === AnimeState.DISABLE
-    );
-    let enabledAnimes = this.allAnimes.filter(
-      (anime) => anime.state === AnimeState.ENABLE
-    );
-
     this.route.queryParams.subscribe(({ showdisable }) => {
+      this.page = 1;
       if (showdisable) {
-        return this.disabledAnimes(disabledAnimes);
+        this.activeList = false;
+
+        return this.getDisabledAnimes();
       }
+      this.activeList = true;
 
-      this.totalPages =
-        enabledAnimes.length < this.itemsPerPage
-          ? 1
-          : Math.ceil(enabledAnimes.length / this.itemsPerPage);
-
-      return (this.animeList = enabledAnimes.slice(
-        this.page * this.itemsPerPage - this.itemsPerPage,
-        this.page * this.itemsPerPage
-      ));
+      return this.getEnabledAnimes();
     });
   }
 
@@ -79,7 +69,10 @@ export class AnimeComponent implements OnInit {
     this.router.navigate([`/upate-anime/${id}`]);
   }
 
-  public disabledAnimes(disabledAnimes: Anime[]) {
+  public getDisabledAnimes() {
+    let disabledAnimes = this.allAnimes.filter(
+      (anime) => anime.state === AnimeState.DISABLE
+    );
     this.totalPages =
       disabledAnimes.length < this.itemsPerPage
         ? 1
@@ -90,9 +83,26 @@ export class AnimeComponent implements OnInit {
       this.page * this.itemsPerPage
     ));
   }
+  public getEnabledAnimes() {
+    let enabledAnimes = this.allAnimes.filter(
+      (anime) => anime.state === AnimeState.ENABLE
+    );
+    this.totalPages =
+      enabledAnimes.length < this.itemsPerPage
+        ? 1
+        : Math.ceil(enabledAnimes.length / this.itemsPerPage);
+
+    return (this.animeList = enabledAnimes.slice(
+      this.page * this.itemsPerPage - this.itemsPerPage,
+      this.page * this.itemsPerPage
+    ));
+  }
 
   public handleChangePage(selectedPage: number) {
     this.page = selectedPage;
-    this.getAnimesByState();
+    if (!this.activeList) {
+      return this.getDisabledAnimes();
+    }
+    return this.getEnabledAnimes();
   }
 }
