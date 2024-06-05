@@ -10,10 +10,8 @@
     ></app-card>
   </article>
   <app-pagination
-    [isAnimeEnable]="isAnimeEnable"
     [totalPages]="totalPages"
     [currentPageNumber]="page"
-    [itemsPerPage]="itemsPerPage"
     (handleChangePageEvent)="handleChangePage($event)"
   ></app-pagination>
 </section>

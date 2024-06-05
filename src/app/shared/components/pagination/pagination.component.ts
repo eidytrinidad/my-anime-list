@@ -16,15 +16,15 @@ import { Anime } from 'src/app/core/models/anime.interface';
 })
 export class PaginationComponent implements OnInit, OnChanges {
   @Input() totalPages!: number;
-  @Input() itemsPerPage!: number;
   @Input() currentPageNumber!: number;
-  @Input() isAnimeEnable!: boolean;
   @Output() handleChangePageEvent = new EventEmitter();
+
   public page: number = 1;
   public pageList: number[] = [];
   constructor() {}
+  
   ngOnChanges(changes: SimpleChanges): void {
-    let { totalPages, currentPageNumber } = changes;
+    let { totalPages } = changes;
 
     if (totalPages?.currentValue !== undefined) {
       this.pagination();
