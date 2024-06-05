@@ -22,7 +22,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   public page: number = 1;
   public pageList: number[] = [];
   constructor() {}
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     let { totalPages } = changes;
 
@@ -49,5 +49,19 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.page = page;
 
     this.handleChangePageEvent.emit(page);
+  }
+  public handleChangePageLeft() {
+    if (this.page > 1) {
+      this.page = this.page - 1;
+
+      this.handleChangePageEvent.emit(this.page);
+    }
+  }
+  public handleChangePageRight() {
+    if (this.page < this.totalPages) {
+      this.page += 1;
+
+      this.handleChangePageEvent.emit(this.page);
+    }
   }
 }

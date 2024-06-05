@@ -1,18 +1,32 @@
-<section class="flex justify-between items-center bg-slate-200 mb-3">
-  <img src="/assets/arrow.svg" alt="arrow" class="w-5" />
-  <ul class="min-w-28 py-3 flex flex-wrap">
-    <li *ngFor="let pageNumber of pageList">
-      <span
-        (click)="handleChangePage(pageNumber)"
-        class="mr-2"
-        [ngClass]="
-          pageNumber === this.currentPageNumber
-            ? 'pagination-btn-secondary'
-            : 'pagination-btn-primary'
-        "
-        >{{ pageNumber }}</span
-      >
-    </li>
-  </ul>
-  <img src="/assets/arrow.svg" alt="arrow" class="w-5 rotate-180" />
+<section class="w-full mb-3 flex justify-center">
+  <article class="flex justify-between items-center w-3/6 md:w-1/4">
+    <img
+      src="/assets/arrow.svg"
+      alt="arrow"
+      class="w-5 cursor-pointer"
+      [ngClass]="this.page === 1 ? 'opacity-40' : ''"
+      (click)="handleChangePageLeft()"
+    />
+    <ul class="py-3 flex justify-center flex-wrap w-full">
+      <li *ngFor="let pageNumber of pageList">
+        <span
+          class="mx-1"
+          (click)="handleChangePage(pageNumber)"
+          [ngClass]="
+            pageNumber === this.currentPageNumber
+              ? 'pagination-btn-secondary'
+              : 'pagination-btn-primary'
+          "
+          >{{ pageNumber }}</span
+        >
+      </li>
+    </ul>
+    <img
+      src="/assets/arrow.svg"
+      alt="arrow"
+      class="w-5 cursor-pointer rotate-180"
+      [ngClass]="this.page === totalPages ? 'opacity-40' : ''"
+      (click)="handleChangePageRight()"
+    />
+  </article>
 </section>
