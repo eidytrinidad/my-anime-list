@@ -25,7 +25,7 @@ export class AddAnimeComponent implements OnInit {
       imgUrl: ['', Validators.required],
       title: ['', Validators.required],
       genres: [''],
-      state: AnimeState.ENABLE,
+      state: AnimeState.ACTIVE,
     });
   }
 

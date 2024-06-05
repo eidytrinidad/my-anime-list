@@ -1,4 +1,4 @@
 export const AnimeState = {
-  ENABLE: true,
-  DISABLE: false,
+  ACTIVE: true,
+  INACTIVE: false,
 };

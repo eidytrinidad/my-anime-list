@@ -56,7 +56,7 @@ export class AnimeComponent implements OnInit {
       if (anime.id === id) {
         return {
           ...anime,
-          state: AnimeState.DISABLE,
+          state: AnimeState.INACTIVE,
         };
       }
       return anime;
@@ -72,7 +72,7 @@ export class AnimeComponent implements OnInit {
 
   public getDisabledAnimes() {
     let disabledAnimes = this.getAnimeList().filter(
-      (anime) => anime.state === AnimeState.DISABLE
+      (anime) => anime.state === AnimeState.INACTIVE
     );
     this.totalPages =
       disabledAnimes.length < this.itemsPerPage
@@ -86,7 +86,7 @@ export class AnimeComponent implements OnInit {
   }
   public getEnabledAnimes() {
     let enabledAnimes = this.getAnimeList().filter(
-      (anime) => anime.state === AnimeState.ENABLE
+      (anime) => anime.state === AnimeState.ACTIVE
     );
 
     this.totalPages =
