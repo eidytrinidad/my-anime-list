@@ -10,6 +10,7 @@
     ></app-card>
   </article>
   <app-pagination
+    *ngIf="totalPages !== 1"
     [totalPages]="totalPages"
     [currentPageNumber]="page"
     (handleChangePageEvent)="handleChangePage($event)"
