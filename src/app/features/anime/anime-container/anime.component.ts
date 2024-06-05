@@ -79,7 +79,7 @@ export class AnimeComponent implements OnInit {
         title: 'Listo',
         text: 'Anime eliminado',
         showCancelButton: false,
-        confirmText:'Cerrar'
+        confirmText: 'Cerrar',
       });
     }
   }
@@ -91,27 +91,22 @@ export class AnimeComponent implements OnInit {
     let inactiveAnimes = this.getAnimeList().filter(
       (anime) => anime.state === AnimeState.INACTIVE
     );
-    this.totalPages =
-      inactiveAnimes.length < this.itemsPerPage
-        ? 1
-        : Math.ceil(inactiveAnimes.length / this.itemsPerPage);
-
-    return (this.animeList = inactiveAnimes.slice(
-      this.page * this.itemsPerPage - this.itemsPerPage,
-      this.page * this.itemsPerPage
-    ));
+    this.setAnimeTotalPagesAndSlice(inactiveAnimes);
   }
   public getActiveAnimes() {
     let activeAnimes = this.getAnimeList().filter(
       (anime) => anime.state === AnimeState.ACTIVE
     );
+    this.setAnimeTotalPagesAndSlice(activeAnimes);
+  }
 
+  public setAnimeTotalPagesAndSlice(animes: Anime[]) {
     this.totalPages =
-      activeAnimes.length < this.itemsPerPage
+      animes.length < this.itemsPerPage
         ? 1
-        : Math.ceil(activeAnimes.length / this.itemsPerPage);
+        : Math.ceil(animes.length / this.itemsPerPage);
 
-    return (this.animeList = activeAnimes.slice(
+    return (this.animeList = animes.slice(
       this.page * this.itemsPerPage - this.itemsPerPage,
       this.page * this.itemsPerPage
     ));
