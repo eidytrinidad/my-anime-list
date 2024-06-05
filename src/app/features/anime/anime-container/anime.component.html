@@ -1,8 +1,21 @@
 <section class="w-full my-4">
- 
   <article
     class="w-full flex flex-col md:flex-row md:justify-around md:flex-wrap items-center"
   >
+    <div class="mt-10" *ngIf="animeList.length < 1">
+      <h4
+        *ngIf="isAnimeActive"
+        class="font-bold text-lg sm:text-xl md:text-2xl"
+      >
+        No tienes animes disponibles en tu lista
+      </h4>
+      <h4
+        *ngIf="!isAnimeActive"
+        class="font-bold text-lg sm:text-xl md:text-2xl"
+      >
+        No tienes animes en tu lista de inactivos
+      </h4>
+    </div>
     <app-card
       (deleteEvent)="deleteAnime($event)"
       (updateEvent)="updateAnime($event)"
