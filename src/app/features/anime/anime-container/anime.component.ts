@@ -24,7 +24,7 @@ export class AnimeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.allAnimes = this.getAnimeList();
+    this.getAnimeList();
     this.getAnimesByState();
   }
 
@@ -45,6 +45,7 @@ export class AnimeComponent implements OnInit {
   public getAnimeList() {
     let animeListData: Anime[] = [];
     this.animeService.getAnimeList().subscribe((animes) => {
+      this.allAnimes = animes;
       animeListData = animes;
     });
     return animeListData;
