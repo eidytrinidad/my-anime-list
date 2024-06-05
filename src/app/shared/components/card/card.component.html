@@ -6,8 +6,15 @@
       alt="{{ anime.title }}"
     />
   </div>
-  <div class="text-center py-2 absolute top-0 w-full bg-slate-900/[0.6]">
-    <p class="font-semibold text-white">{{ anime.title | titlecase }}</p>
+  <div class="text-center px-2 py-2 absolute top-0 w-full bg-slate-900/[0.6]">
+    <p class="font-semibold text-white text-sm">
+      {{ anime.title | titlecase }}
+    </p>
+  </div>
+  <div class="text-center py-2 absolute bottom-16 w-full bg-slate-900/[0.6]">
+    <p class="font-semibold text-white text-xs">
+      {{ anime.genres | titlecase }}
+    </p>
   </div>
   <hr />
   <div
