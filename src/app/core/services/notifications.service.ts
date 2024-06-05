@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { SweetAlertModel } from '../models/notifications.interface';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,20 +12,22 @@ export class NotificationsService {
   public swalNotification({
     title,
     text,
-    icon,
-    showCancelButton,
-    confirmText,
-    cancelText,
+    icon = 'success',
+    showCancelButton = true,
+    confirmText = 'Ok',
+    cancelText = 'Cancelar',
   }: SweetAlertModel) {
-    Swal.fire({
+    let swal = Swal.fire({
       title,
-      text,
-      icon: 'success' || icon,
+
+      html: `<p class='font-semibold'>${text}</p>`,
+      icon,
       showCancelButton,
       confirmButtonColor: '#0f172a',
       cancelButtonColor: '#dc2626',
       confirmButtonText: confirmText,
       cancelButtonText: cancelText,
     });
+    return swal;
   }
 }

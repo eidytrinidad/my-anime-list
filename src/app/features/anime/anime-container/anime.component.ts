@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnimeState } from 'src/app/core/constants/anime';
 import { Anime } from 'src/app/core/models/anime.interface';
 import { AnimeService } from 'src/app/core/services/anime.service';
+import { NotificationsService } from 'src/app/core/services/notifications.service';
 
 @Component({
   selector: 'app-anime',
@@ -20,7 +21,8 @@ export class AnimeComponent implements OnInit {
   constructor(
     private animeService: AnimeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sweetAlert: NotificationsService
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +54,7 @@ export class AnimeComponent implements OnInit {
     return animeListData;
   }
 
-  public deleteAnime(id: string) {
+  public async deleteAnime(id: string) {
     let animeList = this.allAnimes.map((anime) => {
       if (anime.id === id) {
         return {
@@ -62,10 +64,24 @@ export class AnimeComponent implements OnInit {
       }
       return anime;
     });
-    this.page = 1;
-    this.animeService.deleteAnime(animeList).subscribe(() => {
-      this.getActiveAnimes();
+    let { isConfirmed } = await this.sweetAlert.swalNotification({
+      title: 'Alerta',
+      text: 'Esta seguro de querer eliminar este anime?',
+      confirmText: 'Si, eliminar',
+      icon: 'warning',
     });
+    if (isConfirmed) {
+      this.page = 1;
+      this.animeService.deleteAnime(animeList).subscribe(() => {
+        this.getActiveAnimes();
+      });
+      this.sweetAlert.swalNotification({
+        title: 'Listo',
+        text: 'Anime eliminado',
+        showCancelButton: false,
+        confirmText:'Cerrar'
+      });
+    }
   }
   public updateAnime(id: string) {
     this.router.navigate([`/upate-anime/${id}`]);
