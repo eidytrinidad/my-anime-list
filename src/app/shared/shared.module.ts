@@ -12,6 +12,6 @@ const declarations = [HeaderComponent, CardComponent, PaginationComponent];
 @NgModule({
   declarations: [...declarations],
   imports: [CommonModule, RouterModule],
-  exports: [...declarations],
+  exports: [...declarations, RouterModule],
 })
 export class SharedModule {}
