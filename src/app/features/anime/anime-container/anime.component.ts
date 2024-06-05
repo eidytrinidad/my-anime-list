@@ -29,9 +29,10 @@ export class AnimeComponent implements OnInit {
   }
 
   public getAnimesByState() {
-    this.route.queryParams.subscribe(({ showdisable }) => {
+    this.route.url.subscribe((event) => {
       this.page = 1;
-      if (showdisable) {
+
+      if (event[0]?.path !== undefined) {
         this.isAnimeActive = false;
 
         this.getInactiveAnimes();

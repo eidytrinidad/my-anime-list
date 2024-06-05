@@ -14,11 +14,18 @@
         >Agregar</a
       >
       <a
-        class="font-semibold text-white text-sm"
+        class="font-semibold text-white text-sm mr-4"
         routerLink="/"
         routerLinkActive="bg-slate-100/[0.2] p-2 rounded"
-        [queryParams]="{ showdisable: true }"
-        >Desabilitados</a
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Activos</a
+      >
+      <a
+        class="font-semibold text-white text-sm"
+        routerLink="/inactives"
+        routerLinkActive="bg-slate-100/[0.2] p-2 rounded"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Inactivos</a
       >
     </div>
   </article>

@@ -8,6 +8,10 @@ const routes: Routes = [
     component: AnimeComponent,
   },
   {
+    path: 'inactives',
+    component: AnimeComponent,
+  },
+  {
     path: 'add-anime',
     component: AddAnimeComponent,
   },
