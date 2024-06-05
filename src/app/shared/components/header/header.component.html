@@ -1,7 +1,25 @@
-<section class="flex px-2 justify-between items-center mt-6">
-  <a routerLink="/" class="cursor-pointer">
-    <h1 class="text-bold bg-secondary text-white p-2 rounded-lg cursor-pointer">
-      My Anime List
-    </h1>
-  </a>
+<section class="bg-slate-900 py-2">
+  <article class="max-w-6xl mx-auto flex justify-between items-center">
+    <a routerLink="/" class="cursor-pointer">
+      <h1 class="text-bold text-white p-2 rounded-lg cursor-pointer text-2xl">
+        My Anime List
+      </h1>
+    </a>
+
+    <div class="p-2">
+      <a
+        class="font-semibold text-white mr-4 text-sm"
+        routerLink="add-anime"
+        routerLinkActive="bg-slate-100/[0.2] p-2 rounded"
+        >Agregar</a
+      >
+      <a
+        class="font-semibold text-white text-sm"
+        routerLink="/"
+        routerLinkActive="bg-slate-100/[0.2] p-2 rounded"
+        [queryParams]="{ showdisable: true }"
+        >Desabilitados</a
+      >
+    </div>
+  </article>
 </section>
