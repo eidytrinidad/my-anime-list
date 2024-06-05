@@ -23,12 +23,11 @@ export class PaginationComponent implements OnInit, OnChanges {
   public pageList: number[] = [];
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
-    let { totalPages, isAnimeEnable } = changes;
+    let { totalPages } = changes;
 
-    if (isAnimeEnable?.currentValue !== undefined) {
-      this.page = 1;
+    if (totalPages?.currentValue !== undefined) {
+      this.pagination();
     }
-
     if (totalPages?.currentValue < totalPages?.previousValue) {
       this.page = 1;
       this.pagination();
