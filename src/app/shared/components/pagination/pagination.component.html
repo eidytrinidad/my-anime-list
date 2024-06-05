@@ -1,5 +1,6 @@
-<section class="flex justify-center mb-3">
-  <ul class="min-w-28 py-3 flex justify-center">
+<section class="flex justify-between items-center bg-slate-200 mb-3">
+  <img src="/assets/arrow.svg" alt="arrow" class="w-5" />
+  <ul class="min-w-28 py-3 flex flex-wrap">
     <li *ngFor="let pageNumber of pageList">
       <span
         (click)="handleChangePage(pageNumber)"
@@ -13,4 +14,5 @@
       >
     </li>
   </ul>
+  <img src="/assets/arrow.svg" alt="arrow" class="w-5 rotate-180" />
 </section>

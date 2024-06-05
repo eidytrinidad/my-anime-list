@@ -26,10 +26,10 @@ body {
     }
 
     .pagination-btn-primary {
-        @apply border text-white bg-primary rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
+        @apply border text-white bg-primary rounded-md px-3 py-2 text-sm lg:text-base  font-semibold cursor-pointer;
     }
 
     .pagination-btn-secondary {
-        @apply border text-white bg-secondary rounded-md px-3 py-2 text-sm lg:text-base lg:px-4 font-semibold cursor-pointer;
+        @apply border text-white bg-secondary rounded-md px-3 py-2 text-sm lg:text-base  font-semibold cursor-pointer;
     }
 }
