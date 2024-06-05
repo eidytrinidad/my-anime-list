@@ -5,7 +5,7 @@
         (click)="handleChangePage(pageNumber)"
         class="mr-2"
         [ngClass]="
-          page === pageNumber
+          pageNumber === this.currentPageNumber
             ? 'pagination-btn-secondary'
             : 'pagination-btn-primary'
         "
