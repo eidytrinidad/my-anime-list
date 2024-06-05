@@ -3,19 +3,27 @@ import { Anime } from 'src/app/core/models/anime.interface';
 
 export const animes: Anime[] = [
   {
+    id: 'naruto8598',
+    imgUrl:
+      'https://images-cdn.ubuy.co.in/63527edf3492081cbd062a28-hislooks-naruto-poster-anime-wall-art.jpg',
+    title: 'Naruto',
+    genres: 'ninjas, accion, comedia',
+    state: AnimeState.ACTIVE,
+  },
+  {
     id: '1',
     imgUrl:
       'https://bananaroad.com/cdn/shop/products/pst2128_Bleach_Poster_grande.jpg?v=1621363373',
     title: 'bleach',
-    state: AnimeState.ACTIVE,
     genres: 'aventura,sobrenatural',
+    state: AnimeState.ACTIVE,
   },
   {
     id: '2',
     imgUrl: 'https://i.ebayimg.com/images/g/k00AAOSwM4FjBfDs/s-l1200.webp',
     title: 'One Piece',
-    state: AnimeState.ACTIVE,
     genres: 'aventura,fantasia,comedia,piratas',
+    state: AnimeState.ACTIVE,
   },
   {
     id: 'myheroacademia8597',
@@ -66,52 +74,49 @@ export const animes: Anime[] = [
   },
   {
     id: 'theapothecarydiaries18578',
-    title: 'The Apothecary Diaries',
     imgUrl:
       'https://m.media-amazon.com/images/I/714g6aEGYeL._AC_UF894,1000_QL80_.jpg',
+    title: 'The Apothecary Diaries',
     genres: 'epoca, drama, misterios',
     state: AnimeState.ACTIVE,
   },
   {
     id: 'kaiju-no-8-19145',
-    title: 'Kaiju No. 8',
     imgUrl:
       'https://cdn.noitatnemucod.net/thumbnail/300x400/100/edfc7fe935b6eac2d704cf5b0a60e356.jpg',
+    title: 'Kaiju No. 8',
     genres: 'monstruos, accion, terror',
     state: AnimeState.ACTIVE,
   },
   {
-    title: 'Re:Monster',
     id: 'remonster-19123',
     imgUrl:
       'https://cdn.noitatnemucod.net/thumbnail/300x400/100/a7ab15fb2281cce25179cd739112f426.jpg',
+    title: 'Re:Monster',
     genres: 'monstruos, isekai,accion',
     state: AnimeState.ACTIVE,
   },
   {
-    title: 'That Time I Got Reincarnated as a Slime Season 3',
     id: 'thattimeigotreincarnatedasaslimeseason319109',
     imgUrl:
       'https://cdn.noitatnemucod.net/thumbnail/300x400/100/f9b501458823539b6a2004f2cdb98a4a.jpg',
-
+    title: 'That Time I Got Reincarnated as a Slime Season 3',
     genres: 'monstruos, isekai, peleas',
     state: AnimeState.ACTIVE,
   },
   {
     id: 'spiceandwolfmerchantmeetsthewisewolf19143',
-    title: 'Spice and Wolf: Merchant Meets the Wise Wolf',
     imgUrl:
       'https://cdn.noitatnemucod.net/thumbnail/300x400/100/9a04e0bf651bcb1a0aefaace3d2349fa.jpg',
-
+    title: 'Spice and Wolf: Merchant Meets the Wise Wolf',
     genres: 'economia,drama,fantasia',
     state: AnimeState.ACTIVE,
   },
   {
     id: 'bluelockepisodenagi19085',
-    title: 'Blue Lock: Episode Nagi',
     imgUrl:
       'https://cdn.noitatnemucod.net/thumbnail/300x400/100/97a276237c3dce81b62af1565488fd37.jpg',
-
+    title: 'Blue Lock',
     genres: 'Deportes, futbol',
     state: AnimeState.ACTIVE,
   },
