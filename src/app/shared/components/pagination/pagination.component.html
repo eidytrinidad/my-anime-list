@@ -1,5 +1,5 @@
 <section class="w-full mb-3 flex justify-center">
-  <article class="flex justify-between items-center w-3/6 md:w-1/4">
+  <article class="flex justify-between max-h-24 max-w-xs md:max-w-md md:max-h-32">
     <img
       src="/assets/arrow.svg"
       alt="arrow"
@@ -7,10 +7,12 @@
       [ngClass]="this.page === 1 ? 'opacity-40' : ''"
       (click)="handleChangePageLeft()"
     />
-    <ul class="py-3 flex justify-center flex-wrap w-full">
+    <ul
+      class="flex flex-wrap justify-center overflow-auto no-scrollbar gap-y-2"
+    >
       <li *ngFor="let pageNumber of pageList">
         <span
-          class="mx-1"
+          class="mx-1 block text-center"
           (click)="handleChangePage(pageNumber)"
           [ngClass]="
             pageNumber === this.currentPageNumber
