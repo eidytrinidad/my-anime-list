@@ -1,5 +1,5 @@
 <article class="w-60 mb-7 card-shadow md:w-52 relative">
-  <div class="w-full">
+  <div class="w-full" [ngClass]="{ grayscale: !anime.state }">
     <img
       class="object-cover aspect-[5/7] w-full"
       src="{{ anime.imgUrl }}"
