@@ -20,10 +20,13 @@ export class AddAnimeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    const urlRegex =
+      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+
     this.animeForm = this.formBuilder.group({
       id: '',
-      imgUrl: ['', Validators.required],
-      title: ['', Validators.required],
+      imgUrl: ['', [Validators.required, Validators.pattern(urlRegex)]],
+      title: ['', [Validators.required, Validators.minLength(2)]],
       genres: [''],
       state: AnimeState.ACTIVE,
     });
@@ -47,6 +50,7 @@ export class AddAnimeComponent implements OnInit {
     } else {
       this.udpdateAnime();
     }
+   
   }
 
   public setDynamicId() {
@@ -83,5 +87,15 @@ export class AddAnimeComponent implements OnInit {
     if (!this.animeForm.get('state')?.value) {
       this.showEnable = false;
     }
+  }
+
+  public inputValidation(input: string) {
+    if (
+      this.animeForm.get(input)?.invalid &&
+      this.animeForm.get(input)?.touched
+    ) {
+      return true;
+    }
+    return false;
   }
 }

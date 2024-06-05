@@ -5,7 +5,12 @@
     class="w-96 bg-white border border-slate p-4 mt-6"
   >
     <div class="mb-3">
-      <label for="title" class="font-semibold text-xl">Titulo del Anime</label>
+      <label for="title" class="font-semibold text-xl"
+        >Titulo del Anime
+        <span class="text-xs text-red-500" *ngIf="inputValidation('title')"
+          >(Titulo debe ser minimo 2 letras)</span
+        ></label
+      >
       <input
         type="text"
         formControlName="title"
@@ -13,16 +18,24 @@
       />
     </div>
     <div class="mb-3">
-      <label for="imgUrl" class="font-semibold text-xl">Url de la Imagen</label>
+      <label for="imgUrl" class="font-semibold text-xl"
+        >Url de la Imagen
+        <span *ngIf="inputValidation('imgUrl')" class="text-xs text-red-500"
+          >(Ingrese url valida)</span
+        >
+      </label>
       <input
-        type="text"
+        type="url"
         formControlName="imgUrl"
         class="border rounded-sm border-slate-400 outline-primary block w-full pl-2 py-1"
       />
     </div>
 
     <div class="mb-3">
-      <label for="genres" class="font-semibold text-xl">Generos</label>
+      <label for="genres" class="font-semibold text-xl"
+        >Generos
+        <span class="text-xs">(Separe los generos por comas)</span></label
+      >
       <input
         type="text"
         formControlName="genres"
