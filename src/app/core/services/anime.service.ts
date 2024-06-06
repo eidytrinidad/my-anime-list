@@ -7,7 +7,7 @@ import { animes } from 'src/app/shared/mocks/anime.mock';
   providedIn: 'root',
 })
 export class AnimeService {
-  public animeList: Anime[] = [];
+  private animeList: Anime[] = [];
 
   constructor() {}
 
