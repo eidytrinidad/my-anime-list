@@ -21,7 +21,6 @@ export class AnimeService {
   }
   public addAnime(anime: Anime): Observable<Anime> {
     this.animeList.unshift(anime);
-    //this.animeList = animes;
     localStorage.setItem('animes', JSON.stringify(this.animeList));
     return of(anime);
   }
@@ -42,4 +41,11 @@ export class AnimeService {
     localStorage.setItem('animes', JSON.stringify(updatedList));
     return of(updatedList);
   }
+
+  // public saveMockAnimesToStorage() {
+  //   localStorage.removeItem('animes');
+  //   this.animeList = animes;
+  //   localStorage.setItem('animes', JSON.stringify(this.animeList));
+  //   return of(this.animeList);
+  // }
 }

@@ -7,7 +7,6 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Anime } from 'src/app/core/models/anime.interface';
 
 @Component({
   selector: 'app-pagination',
@@ -52,7 +51,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
   public handleChangePageLeft() {
     if (this.page > 1) {
-      this.page = this.page - 1;
+      this.page -= 1;
 
       this.handleChangePageEvent.emit(this.page);
     }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { SweetAlertModel } from '../models/notifications.interface';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
