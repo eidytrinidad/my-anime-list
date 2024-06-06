@@ -42,10 +42,11 @@ export class AnimeService {
     return of(updatedList);
   }
 
-  // public saveMockAnimesToStorage() {
-  //   localStorage.removeItem('animes');
-  //   this.animeList = animes;
-  //   localStorage.setItem('animes', JSON.stringify(this.animeList));
-  //   return of(this.animeList);
-  // }
+  //Todo: Remove service.
+  public saveMockAnimesToStorage() {
+    localStorage.removeItem('animes');
+    this.animeList = animes;
+    localStorage.setItem('animes', JSON.stringify(this.animeList));
+    return of(this.animeList);
+  }
 }
