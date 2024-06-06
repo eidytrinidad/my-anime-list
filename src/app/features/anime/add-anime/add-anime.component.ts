@@ -40,15 +40,15 @@ export class AddAnimeComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  public onSubmit() {
-    if (this.animeForm.valid && !this.isUpdate) {
+  public addAnime() {
+    if (this.animeForm.valid) {
       const id = this.setDynamicId();
       this.animeForm.get('id')?.patchValue(id);
       this.animeService.addAnime(this.animeForm.value).subscribe((result) => {
         this.router.navigate(['/']);
       });
     } else {
-      this.udpdateAnime();
+      this.markInputAsTouch();
     }
   }
 
@@ -73,12 +73,14 @@ export class AddAnimeComponent implements OnInit {
     });
   }
   public udpdateAnime() {
-    if (this.animeForm.valid && this.isUpdate) {
+    if (this.animeForm.valid) {
       this.animeService
         .updateAnime(this.animeForm.value)
         .subscribe((result) => {
           this.router.navigate(['/']);
         });
+    } else {
+      this.markInputAsTouch();
     }
   }
 
@@ -86,6 +88,10 @@ export class AddAnimeComponent implements OnInit {
     if (!this.animeForm.get('state')?.value) {
       this.showEnable = false;
     }
+  }
+
+  public markInputAsTouch() {
+    this.animeForm.markAllAsTouched();
   }
 
   public inputValidation(input: string) {

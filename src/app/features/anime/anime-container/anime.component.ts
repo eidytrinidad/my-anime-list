@@ -28,7 +28,6 @@ export class AnimeComponent implements OnInit {
   ngOnInit(): void {
     this.getAnimeList();
     this.getAnimesByState();
-    //this.animeService.saveMockAnimesToStorage().subscribe();
   }
 
   public getAnimesByState() {

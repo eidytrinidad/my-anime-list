@@ -1,6 +1,5 @@
 <section class="w-full flex items-center justify-center">
   <form
-    (ngSubmit)="onSubmit()"
     [formGroup]="animeForm"
     class="w-96 bg-white border border-slate p-4 mt-6"
   >
@@ -54,8 +53,12 @@
       </label>
     </div>
     <div class="flex justify-between items-center">
-      <button *ngIf="!isUpdate" class="btn-primary">Agregar</button>
-      <button *ngIf="isUpdate" class="btn-secondary">Editar</button>
+      <button *ngIf="!isUpdate" class="btn-primary" (click)="addAnime()">
+        Agregar
+      </button>
+      <button *ngIf="isUpdate" class="btn-secondary" (click)="udpdateAnime()">
+        Editar
+      </button>
       <button class="btn-red" (click)="cancel()">Cancelar</button>
     </div>
   </form>
