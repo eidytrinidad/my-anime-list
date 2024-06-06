@@ -41,7 +41,7 @@ export class AddAnimeComponent implements OnInit {
   }
 
   public onSubmit() {
-    if (this.animeForm.valid !== this.isUpdate) {
+    if (this.animeForm.valid && !this.isUpdate) {
       const id = this.setDynamicId();
       this.animeForm.get('id')?.patchValue(id);
       this.animeService.addAnime(this.animeForm.value).subscribe((result) => {
@@ -50,7 +50,6 @@ export class AddAnimeComponent implements OnInit {
     } else {
       this.udpdateAnime();
     }
-   
   }
 
   public setDynamicId() {
@@ -74,7 +73,7 @@ export class AddAnimeComponent implements OnInit {
     });
   }
   public udpdateAnime() {
-    if (this.animeForm.valid) {
+    if (this.animeForm.valid && this.isUpdate) {
       this.animeService
         .updateAnime(this.animeForm.value)
         .subscribe((result) => {

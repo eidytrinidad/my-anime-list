@@ -112,12 +112,4 @@ export const animes: Anime[] = [
     genres: 'economia,drama,fantasia',
     state: AnimeState.ACTIVE,
   },
-  {
-    id: 'bluelockepisodenagi19085',
-    imgUrl:
-      'https://cdn.noitatnemucod.net/thumbnail/300x400/100/97a276237c3dce81b62af1565488fd37.jpg',
-    title: 'Blue Lock',
-    genres: 'Deportes, futbol',
-    state: AnimeState.ACTIVE,
-  },
 ];
