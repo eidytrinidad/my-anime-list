@@ -55,8 +55,10 @@ export class AnimeComponent implements OnInit {
   }
 
   public async deleteAnime(id: string) {
+    let animeTitle = '';
     let animeList = this.allAnimes.map((anime) => {
       if (anime.id === id) {
+        animeTitle = anime.title;
         return {
           ...anime,
           state: AnimeState.INACTIVE,
@@ -65,9 +67,9 @@ export class AnimeComponent implements OnInit {
       return anime;
     });
     let { isConfirmed } = await this.sweetAlert.swalNotification({
-      title: 'Alerta',
-      text: 'Esta seguro de querer eliminar este anime?',
-      confirmText: 'Si, eliminar',
+      title: '¡Alerta!',
+      text: `¿Esta seguro borrar ${animeTitle} de la lista?`,
+      confirmText: 'Si, borrar',
       icon: 'warning',
     });
     if (isConfirmed) {
@@ -77,7 +79,7 @@ export class AnimeComponent implements OnInit {
       });
       this.sweetAlert.swalNotification({
         title: 'Listo',
-        text: 'Anime eliminado',
+        text: `${animeTitle} fue eliminado`,
         showCancelButton: false,
         confirmText: 'Cerrar',
       });
