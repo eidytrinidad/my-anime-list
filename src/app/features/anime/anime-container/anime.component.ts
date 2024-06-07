@@ -49,7 +49,9 @@ export class AnimeComponent implements OnInit {
     let animeListData: Anime[] = [];
     this.animeService.getAnimeList().subscribe((animes) => {
       this.allAnimes = animes;
-      animeListData = animes;
+      animeListData = animes.sort((a, b) =>
+        a.title > b.title ? 1 : b.title > a.title ? -1 : 0
+      );
     });
     return animeListData;
   }

@@ -13,11 +13,7 @@ export class AnimeService {
 
   public getAnimeList(): Observable<Anime[]> {
     this.animeList = JSON.parse(localStorage.getItem('animes') || '[]');
-    return of(
-      this.animeList.sort((a, b) =>
-        a.title > b.title ? 1 : b.title > a.title ? -1 : 0
-      )
-    );
+    return of(this.animeList);
   }
   public getAnime(id: string): Observable<Anime | undefined> {
     let anime = this.animeList.find((anime) => anime.id === id);
