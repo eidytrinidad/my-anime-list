@@ -4,10 +4,16 @@ import {
   CardComponent,
   HeaderComponent,
   PaginationComponent,
+  NavbarComponent,
 } from './components/';
 import { RouterModule } from '@angular/router';
 
-const declarations = [HeaderComponent, CardComponent, PaginationComponent];
+const declarations = [
+  HeaderComponent,
+  CardComponent,
+  PaginationComponent,
+  NavbarComponent,
+];
 
 @NgModule({
   declarations: [...declarations],
