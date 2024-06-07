@@ -13,15 +13,19 @@ export class AnimeService {
 
   public getAnimeList(): Observable<Anime[]> {
     this.animeList = JSON.parse(localStorage.getItem('animes') || '[]');
-    return of(this.animeList);
+    return of(
+      this.animeList.sort((a, b) =>
+        a.title > b.title ? 1 : b.title > a.title ? -1 : 0
+      )
+    );
   }
   public getAnime(id: string): Observable<Anime | undefined> {
     let anime = this.animeList.find((anime) => anime.id === id);
     return of(anime);
   }
   public addAnime(anime: Anime): Observable<Anime> {
-    this.animeList.unshift(anime);
-    localStorage.setItem('animes', JSON.stringify(this.animeList));
+    let list = [anime, ...this.animeList];
+    localStorage.setItem('animes', JSON.stringify(list));
     return of(anime);
   }
   public deleteAnime(animeList: Anime[]): Observable<Anime[]> {
